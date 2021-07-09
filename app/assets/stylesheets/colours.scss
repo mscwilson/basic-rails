@@ -1,3 +1,57 @@
 // Place all the styles related to the Colours controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
+  column-gap: 2px;
+  row-gap: 2px;
+}
+
+.red {
+  background-color: #ff0000;
+}
+
+.pink {
+  background-color: #ff3b7d;
+}
+
+.purple {
+  background-color: #800080;
+}
+
+.blue {
+  background-color: #0000ff;
+}
+
+.turquoise {
+  background-color: #40e0d0;
+}
+
+.teal {
+  background-color: #26a69a;
+}
+
+.green {
+  background-color: #4caf50;
+}
+
+.yellow {
+  background-color: #ffff00;
+}
+
+.orange {
+  background-color: #ffa500;
+}
+
+// "red">red</div>
+//     <div class="pink">pink</div>
+//     <div class="purple">purple</div>
+//     <div class="blue">blue</div>
+//     <div class="turquoise">turquoise</div>
+//     <div class="teal">teal</div>
+//     <div class="green">green</div>
+//     <div class="yellow">yellow</div>
+//     <div class="orange">orange</d
