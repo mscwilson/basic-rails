@@ -7,4 +7,7 @@ class ColoursController < ApplicationController
 
   def dark
   end
+
+  def about
+  end
 end

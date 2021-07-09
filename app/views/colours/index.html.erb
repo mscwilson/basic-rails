@@ -1,17 +1,28 @@
 <div class="container">
+
+
+
+<%= link_to 'About', colours_about_path %>
+
   <h1>Colours</h1>
   <h3>What's your favourite colour?</h3>
 
-  <div class="grid">
-    <div class="red"></div>
-    <div class="pink"></div>
-    <div class="purple"></div>
-    <div class="blue"></div>
-    <div class="turquoise"></div>
-    <div class="teal"></div>
-    <div class="green"></div>
-    <div class="yellow"></div>
-    <div class="orange"></div>
+  <div class="grid-tint">
+    <div class="grid">
+      <div class="red"></div>
+      <div class="pink"></div>
+      <div class="purple"></div>
+      <div class="blue"></div>
+      <div class="turquoise"></div>
+      <div class="teal"></div>
+      <div class="green"></div>
+      <div class="yellow"></div>
+      <div class="orange"></div>
+    </div>
   </div>
+
+  <p>These colours are too vibrant!</p>
+  <p><%= link_to 'lighter', colours_light_path %>
+  <%= link_to 'darker', colours_dark_path %></p>
 
 </div>
