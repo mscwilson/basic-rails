@@ -68,22 +68,11 @@
   background-color: #ffa500;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltiptext {
-  visibility: hidden;
-  width: 120px;
+.colour-message {
   border: 2px solid #494c6f;
   background-color: #fffff8;
   color: #494c6f;
   text-align: center;
   border-radius: 5px;
-  padding: 10px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
+  padding: 10px;
 }

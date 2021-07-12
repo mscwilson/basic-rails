@@ -1,49 +1,49 @@
-function showColourTooltip(event, position){
-  // console.log(position);
-
-  const colourName = event.target.className.split(" ")[1]
-  const message = `${colourName[0].toUpperCase()}${colourName.slice(1)}, ${nicePhrase()}!`
+function showColourTooltip(event, positionAndSize, element){
+  console.log(element);
+  const colourName = event.target.className.split(" ")[1];
+  const message = createColourMessage(colourName);
 
   const inserted = document.createElement("div");
-  document.body.appendChild(inserted)
-  inserted.className = "tooltiptext2"
-  inserted.style.cssText = "position:absolute; color: red; backgroundColor: black; z-position: 1;";
-  inserted.innerHTML = `<span style= "visibility: visible">${message}</span>`
-  inserted.style.left = position.left + "px";
-  inserted.style.top = position.top + "px";
+  document.querySelectorAll(".container")[0].appendChild(inserted);
 
-  const tooltip = document.querySelectorAll('.tooltip')[0];
-  const tooltiptext = document.querySelectorAll('.tooltiptext')[0];
-
-  tooltip.style.top = (event.pageY - 20) + "px";
-  tooltip.style.left = (event.pageX - 60) + "px";
-
-  tooltiptext.innerHTML = message
-  tooltiptext.style.visibility = 'visible';
+  styleMessage(message, inserted, positionAndSize)
 }
 
-function nicePhrase() {
-  const positiveWords = ["great choice", "great choice", "lovely", "nice", "excellent", "love it", "beautiful"]
-  return positiveWords[Math.floor(Math.random() * positiveWords.length)]
+function styleMessage (message, messageDiv, colourPositionAndSize) {
+  messageDiv.className = "colour-message";
+  messageDiv.style.cssText = "position:absolute;";
+  messageDiv.innerHTML = `<span>${message}</span>`;
+
+  const messagePositionAndSize = messageDiv.getBoundingClientRect();
+  messageDiv.style.left = (colourPositionAndSize.left + (colourPositionAndSize.width/2) - (messagePositionAndSize.width/2)) + "px";
+  messageDiv.style.top = (colourPositionAndSize.top - 40) + "px";
 }
 
-function hideTooltip() {
-  let tooltip = document.querySelectorAll('.tooltiptext')[0];
-  tooltip.style.visibility = 'hidden';
+function createColourMessage(colourName) {
+  const positiveWords = ["great choice", "great choice", "lovely", "nice", "excellent", "love it", "beautiful"];
+  const randomNicePhrase = positiveWords[Math.floor(Math.random() * positiveWords.length)];
+  return `${colourName[0].toUpperCase()}${colourName.slice(1)}, ${randomNicePhrase}!`;
+}
 
-  let newTooltip = document.getElementsByClassName("tooltiptext2")
-  // newTooltip.remove()
+function hideColourMessage() {
+  const messages = document.getElementsByClassName("colour-message");
+
+  if (messages.length > 0) {
+    const container = document.querySelectorAll(".container")[0]
+    container.removeChild(messages[0])
+  };
 }
 
 document.addEventListener("turbolinks:load", function() {
 
   const squares = document.querySelectorAll("div.colour");
   squares.forEach((element) => {
-    const position = element.getBoundingClientRect();
+    const positionAndSize = element.getBoundingClientRect();
+
     element.addEventListener("click", (event) => {
-      showColourTooltip(event, position);
+      showColourTooltip(event, positionAndSize, element);
     })
-    element.addEventListener("mouseleave", hideTooltip);
+    element.addEventListener("mouseout", hideColourMessage);
   })
 
 });
