@@ -8,22 +8,31 @@ function showColourMessage(element){
 }
 
 function styleMessage (messageDiv, colourSquare) {
-  const colourName = colourSquare.className.split(" ")[1];
-  const colourXY = colourSquare.getBoundingClientRect();
-  const messageXY = messageDiv.getBoundingClientRect();
-
   messageDiv.className = "colour-message";
   messageDiv.style.cssText = "position:absolute;";
-  messageDiv.innerHTML = `<span>${colourMessage(colourName)}</span>`;
+  messageDiv.innerHTML = `<span>${colourMessage(colourSquare)}</span>`;
 
+  const colourXY = colourSquare.getBoundingClientRect();
+  const messageXY = messageDiv.getBoundingClientRect();
   messageDiv.style.left = (colourXY.left + (colourXY.width/2) - (messageXY.width/2)) + "px";
   messageDiv.style.top = (colourXY.top - 40) + "px";
 }
 
-function colourMessage(colourName) {
+function colourMessage(colourSquare) {
+  let colourName;
+
+  if (colourSquare.parentElement.classList[1] === "light") {
+    colourName = `Pale ${colourSquare.className.split(" ")[1]}`;
+  } else if (colourSquare.parentElement.classList[1] === "dark") {
+    colourName = `Dark ${colourSquare.className.split(" ")[1]}`;
+  } else {
+    const colour = colourSquare.className.split(" ")[1]
+    colourName = `${colour[0].toUpperCase()}${colour.slice(1)}`
+  }
+
   const positiveWords = ["great choice", "great choice", "lovely", "nice", "excellent", "love it", "beautiful"];
   const randomNicePhrase = positiveWords[Math.floor(Math.random() * positiveWords.length)];
-  return `${colourName[0].toUpperCase()}${colourName.slice(1)}, ${randomNicePhrase}!`;
+  return `${colourName}, ${randomNicePhrase}!`;
 }
 
 function hideColourMessage() {
