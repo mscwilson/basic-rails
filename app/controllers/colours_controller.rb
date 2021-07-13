@@ -1,9 +1,10 @@
 class ColoursController < ApplicationController
-  def index; end
+  def index
+  end
 
-  def light; end
+  def light
+  end
 
-  def dark; end
-
-  def about; end
+  def dark
+  end
 end
