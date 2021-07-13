@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'colours/index'
-  get 'colours/light'
-  get 'colours/dark'
-  root "home#index"
+  root "colours#index"
+  get "colours/index"
+  get "colours/light"
+  get "colours/dark"
+  get "colours/about"
 
-  get 'home/index'
-  get 'home/colours'
+  get "home/index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
